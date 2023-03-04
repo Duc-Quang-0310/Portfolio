@@ -6,42 +6,65 @@ export const Project = () => {
     <div>
       <h3 className="text-header">My Project</h3>
       <p className="sub-text">
-        Up to now, I have finished 2 projects with one project finished and the
+        Up to now, I have done 3 projects with one project finished and the
         other still under development:
       </p>
       <ul>
         <li className="sub-text">
-          First Project: Computadora is a e-commerce website which is created
-          with MERN stack also as know as MongoDB-ExpressJS-ReactJS-NodeJS
-          stack. This project for some reason the deployed version is crashed so
-          I will leave a link to source code of Project:{" "}
+          Newest Project: Tu đu lít is a todo app with feature like drag and
+          drop task create stage and also have weather forecase. Is created with
+          fullstack Frontend using{" "}
+          <strong className="text-warning"> React</strong> and{" "}
+          <strong className="text-warning">Firebase </strong> as realtime
+          database. This project is still run and update daily at{" "}
           <a
             className="redirect-link"
-            href="https://github.com/Duc-Quang-0310/BackEnd"
+            href="https://github.com/Duc-Quang-0310/Advance-Todo-List"
           >
-            Backend
-          </a>
-          ,{" "}
-          <a className="redirect-link" href="https://github.com/Duc-Quang-0310">
             Frontend
           </a>
         </li>
         <li className="text-decor-none">
           <Row>
             <Col md={6} className="mt-4">
-              <Image src="./images/p1.png" className="image-normal shadow-sm" />
+              <Image
+                src="./images/Demo1.png"
+                className="image-normal shadow-sm"
+              />
             </Col>
             <Col md={6} className="mt-4">
-              <Image src="./images/p2.png" className="image-normal shadow-sm" />
+              <Image
+                src="./images/Demo2.png"
+                className="image-normal shadow-sm"
+              />
             </Col>
           </Row>
           <Row>
             <Col md={6} className="mt-4">
-              <Image src="./images/p3.png" className="image-normal shadow-sm" />
+              <Image
+                src="./images/Demo3.png"
+                className="image-normal shadow-sm"
+              />
             </Col>
             <Col md={6} className="mt-4">
-              <Image src="./images/p4.png" className="image-normal shadow-sm" />
+              <Image
+                src="./images/Demo4.png"
+                className="image-normal shadow-sm"
+              />
             </Col>
+          </Row>
+        </li>
+
+        <li className="text-decor-none">
+          <Row className="d-flex justify-content-center">
+            <Button className="button-custom">
+              <a
+                href="https://q-todo-app-101.web.app/sign-in"
+                className="redirect-link-white"
+              >
+                Take me there
+              </a>
+            </Button>
           </Row>
         </li>
 
@@ -93,6 +116,41 @@ export const Project = () => {
                 Take me there
               </a>
             </Button>
+          </Row>
+        </li>
+
+        <li className="sub-text mt-4">
+          Second Project: Computadora is a e-commerce website which is created
+          with MERN stack also as know as MongoDB-ExpressJS-ReactJS-NodeJS
+          stack. This project for some reason the deployed version is crashed so
+          I will leave a link to source code of Project:{" "}
+          <a
+            className="redirect-link"
+            href="https://github.com/Duc-Quang-0310/BackEnd"
+          >
+            Backend
+          </a>
+          ,{" "}
+          <a className="redirect-link" href="https://github.com/Duc-Quang-0310">
+            Frontend
+          </a>
+        </li>
+        <li className="text-decor-none">
+          <Row>
+            <Col md={6} className="mt-4">
+              <Image src="./images/p1.png" className="image-normal shadow-sm" />
+            </Col>
+            <Col md={6} className="mt-4">
+              <Image src="./images/p2.png" className="image-normal shadow-sm" />
+            </Col>
+          </Row>
+          <Row>
+            <Col md={6} className="mt-4">
+              <Image src="./images/p3.png" className="image-normal shadow-sm" />
+            </Col>
+            <Col md={6} className="mt-4">
+              <Image src="./images/p4.png" className="image-normal shadow-sm" />
+            </Col>
           </Row>
         </li>
       </ul>

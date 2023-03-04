@@ -1,4 +1,3 @@
-import React from "react";
 import { Card, Col, Row } from "react-bootstrap";
 import { InfoCircleFill, HouseFill, Ethernet } from "react-bootstrap-icons";
 
@@ -32,20 +31,36 @@ export const Education = () => {
             <Card.Text className="text-card">Additional Info</Card.Text>
             <Card.Title className="card-title">Developer</Card.Title>
             <p className="card-block-info mt-2">
-              Powergate Software
+              VMO Global
               <span className="text-right">07/2021-now</span>
             </p>
-            <p className="card-block-info">
+            <p className="card-block-info ">
+              Powergate Software
+              <span className="text-right">07/2021-06/2021</span>
+            </p>
+            <p className="card-block-info ">
               Favorite JS Framework
-              <span className="text-right">ReactJS</span>
+              <span className="text-right font-weight-bold text-important">
+                ReactJS
+              </span>
+            </p>
+            <p className="card-block-info ">
+              State Management
+              <span className="text-right font-weight-bold text-important">
+                Redux, Redux Toolkit, Redux Saga, Zustand
+              </span>
             </p>
             <p className="card-block-info">
               CSS Framework
-              <span className="text-right">MUI, Bootstrap,TailWind CSS</span>
+              <span className="text-right">
+                MUI, Bootstrap, ChakraUI, TailWind CSS
+              </span>
             </p>
             <p className="card-block-info">
               Programing Language
-              <span className="text-right">Javascript, Typescript</span>
+              <span className="text-right text-important">
+                Javascript, Typescript
+              </span>
             </p>
             <p className="card-block-info">
               Code control

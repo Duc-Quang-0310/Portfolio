@@ -40,7 +40,16 @@ export const FirstEntry = () => {
           below. Thanks for seeing this. Hope you have a wonderful time.
         </h4>
 
-        <Button className="first-entry-button"> Discover more </Button>
+        <Button
+          className="first-entry-button"
+          onClick={() =>
+            window.open(
+              "https://www.topcv.vn/xem-cv/DVwMUF8NCVsCVl0PXARWBlZTAQZdDQVWV1MIVwdeb9"
+            )
+          }
+        >
+          Discover more
+        </Button>
       </Col>
     </Row>
   );

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { FirstEntry } from "./Components/FirstEntry";
 import "./App.css";
 import { Container, Nav, Navbar } from "react-bootstrap";
@@ -16,24 +16,19 @@ enum Tab {
   CONTACT = "Contact",
 }
 
+const NAV_HEIGHT = 100;
+
 function App() {
   const [navDisplay, setNavDisplay] = React.useState<boolean>(true);
   const [windowWith, setWindowWith] = React.useState<number>(window.innerWidth);
-  const [windowHeight, setWindowHeight] = React.useState<number>(
-    window.pageYOffset
-  );
   const [stackStatus, setStackStatus] = React.useState<boolean>(true);
   const [tab, setTab] = React.useState<Tab | null>(null);
   const aboutMeRef = React.useRef<HTMLDivElement>(null);
   const education = React.useRef<HTMLDivElement>(null);
   const project = React.useRef<HTMLDivElement>(null);
   const contact = React.useRef<HTMLDivElement>(null);
-  const [aboutMeTop, setAboutMeTop] = React.useState<number>();
-  const [educationTop, setEducationTop] = React.useState<number>();
-  const [projectTop, setProjectTop] = React.useState<number>();
-  const [contactTop, setContactTop] = React.useState<number>();
 
-  const renderIcon = () => {
+  const renderIcon = useMemo(() => {
     if (!stackStatus) {
       return (
         <Stack
@@ -50,29 +45,33 @@ function App() {
         onClick={() => setStackStatus((prev) => !prev)}
       />
     );
-  };
+  }, [stackStatus]);
 
   const handleScroll = React.useCallback(() => {
-    setWindowHeight(window.pageYOffset);
-    setAboutMeTop(aboutMeRef.current?.offsetTop);
-    setEducationTop(education.current?.offsetTop);
-    setProjectTop(project.current?.offsetTop);
-    setContactTop(contact.current?.offsetTop);
-  }, []);
+    const windowHeight = window.scrollY;
+    const aboutMeTop = aboutMeRef.current?.offsetTop || 0;
+    const educationTop = education.current?.offsetTop || 0;
+    const projectTop = project.current?.offsetTop || 0;
+    const contactTop = contact.current?.offsetTop || 0;
 
-  React.useEffect(() => {
-    if (aboutMeTop && educationTop && projectTop && contactTop) {
-      if (windowHeight > aboutMeTop && windowHeight < educationTop) {
+    if (aboutMeTop || educationTop || projectTop || contactTop) {
+      if (windowHeight < aboutMeTop && windowHeight < educationTop) {
         setTab(Tab.ABOUT_ME);
-      } else if (windowHeight > educationTop && windowHeight < projectTop) {
+      } else if (
+        windowHeight >= educationTop - NAV_HEIGHT &&
+        windowHeight < projectTop - NAV_HEIGHT
+      ) {
         setTab(Tab.EDUCATION);
-      } else if (windowHeight > projectTop && windowHeight < contactTop) {
+      } else if (
+        windowHeight >= projectTop - NAV_HEIGHT &&
+        windowHeight < contactTop - NAV_HEIGHT
+      ) {
         setTab(Tab.PROJECT);
-      } else if (windowHeight > contactTop) {
+      } else if (windowHeight >= contactTop - NAV_HEIGHT) {
         setTab(Tab.CONTACT);
       }
     }
-  }, [windowHeight, aboutMeTop, educationTop, projectTop, contactTop]);
+  }, []);
 
   React.useEffect(() => {
     window.addEventListener("resize", () => {
@@ -112,16 +111,22 @@ function App() {
             <Nav>
               <Nav.Link
                 className={`px-3 ${tab === Tab.ABOUT_ME && "nav-active"}`}
-                onClick={() =>
-                  aboutMeRef.current?.scrollIntoView({ behavior: "smooth" })
-                }
+                onClick={() => {
+                  aboutMeRef.current?.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start",
+                  });
+                }}
               >
                 About Me
               </Nav.Link>
               <Nav.Link
                 className={`px-3 ${tab === Tab.EDUCATION && "nav-active"}`}
                 onClick={() =>
-                  education.current?.scrollIntoView({ behavior: "smooth" })
+                  education.current?.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start",
+                  })
                 }
               >
                 Details
@@ -129,7 +134,10 @@ function App() {
               <Nav.Link
                 className={`px-3 ${tab === Tab.PROJECT && "nav-active"}`}
                 onClick={() =>
-                  project.current?.scrollIntoView({ behavior: "smooth" })
+                  project.current?.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start",
+                  })
                 }
               >
                 Project
@@ -137,14 +145,17 @@ function App() {
               <Nav.Link
                 className={`px-3 ${tab === Tab.CONTACT && "nav-active"}`}
                 onClick={() =>
-                  contact.current?.scrollIntoView({ behavior: "smooth" })
+                  contact.current?.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start",
+                  })
                 }
               >
                 Contact
               </Nav.Link>
             </Nav>
           ) : (
-            renderIcon()
+            renderIcon
           )}
         </Container>
         {!navDisplay && stackStatus && (
